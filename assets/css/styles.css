@@ -387,9 +387,118 @@ img{
   display: flex;
   justify-content: center;
 }
+
 /*==================== SKILLS ====================*/
+.skills__container{
+  row-gap: 0;
+}
 
+.skills__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-2-5);
+  cursor: pointer;
+}
 
+.skills__icon,
+.skills__arrow{
+  font-size: 2rem;
+  color: var(--first-color);
+}
+
+.skills__icon{
+  margin-right: var(--mb-0-75);
+}
+
+.skills__title{
+  font-size: var(--h3-font-size);
+}
+
+.skills__subtitle{
+  font-size: var(--small-font-size);
+  columns: var(--text-color-light);
+}
+
+.skills__arrow{
+  margin-left: auto;
+  transform: 0.4s;
+}
+
+.skills__list{
+  row-gap: 1.5rem;
+  padding-left: 2.7rem;
+}
+
+.skills__titles{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--mb-0-5);
+}
+
+.skills__name{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+}
+
+.skills__bar,
+.skills__percentage{
+  height: 5px;
+  border-radius: 0.25rem;
+}
+
+.skills__bar{
+  background-color: var(--first-color-lighter);
+}
+
+.skills__percentage{
+  display: block;
+  background-color: var(--first-color);
+}
+
+.skills__matlab{
+  width: 90%;
+}
+.skills__python{
+  width: 80%;
+}
+.skills__bash{
+  width: 60%;
+}
+.skills__clang{
+  width: 85%;
+}
+.skills__neuro{
+  width: 90%;
+}
+.skills__eeg{
+  width: 90%;
+}
+.skills__mgmt{
+  width: 90%;
+}
+.skills__other{
+  width: 90%;
+}
+.skills__poems{
+  width: 90%;
+}
+.skills__shortstore{
+  width: 90%;
+}
+
+.skills__close .skills__list{
+  height: 0;
+  overflow: hidden;
+}
+
+.skills__open .skills__list{
+  height: max-content;
+  margin-bottom: var(--mb-2-5);
+}
+
+.skills__open .skills__arrow{
+  transform: rotate(-180deg);
+}
 /*==================== QUALIFICATION ====================*/
 
 
@@ -431,3 +540,18 @@ img{
 
 
 /* For large devices */
+
+/*====================== UILs ========================*/
+.uil--flask {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M20.11 17.49L15 8.73V4h1a1 1 0 0 0 0-2H8a1 1 0 0 0 0 2h1v4.73l-5.11 8.76A3 3 0 0 0 6.48 22h11a3 3 0 0 0 2.59-4.51Zm-9.25-8A1 1 0 0 0 11 9V4h2v5a1 1 0 0 0 .14.5L14 11h-4Zm7.52 10a1 1 0 0 1-.86.5h-11a1 1 0 0 1-.86-.5a1 1 0 0 1 0-1L8.83 13h6.35l3.2 5.5a1 1 0 0 1 0 1ZM10 15a1 1 0 1 0 1 1a1 1 0 0 0-1-1m4 1a1 1 0 1 0 1 1a1 1 0 0 0-1-1'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
