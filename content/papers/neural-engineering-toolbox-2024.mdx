@@ -1,0 +1,59 @@
+---
+title: "An Open-Source MATLAB Toolbox for Mobile Brain-Body Imaging Data Analysis"
+authors:
+  - Jacob Salminen
+  - Collaborator C
+  - PI Name
+journal: "Journal of Open Source Software"
+year: 2024
+abstract: "We present MoBILAB-JS, an open-source MATLAB/Python toolbox designed to streamline preprocessing, analysis, and visualization of simultaneous EEG and biomechanical data collected during ecological movement tasks. The toolbox is optimized for high-performance computing clusters and reproducible research workflows."
+doi: "10.21105/placeholder"
+tags:
+  - EEG
+  - Open Source
+  - MATLAB
+  - Toolbox
+  - Reproducible Research
+  - HPC
+---
+
+## The problem this solves
+
+Mobile brain-body imaging (MoBI) — the simultaneous recording of EEG, motion capture, and other physiological signals during natural movement — generates massive, complex datasets. A single 90-minute experimental session with one participant can produce several gigabytes of data across multiple modalities, each with different sampling rates, reference schemes, and artifact profiles.
+
+For years, researchers in this space (including myself) have cobbled together preprocessing workflows from disparate toolboxes: EEGLAB for EEG, custom MATLAB scripts for motion data, R for statistics. The result is fragmented pipelines that are hard to reproduce, difficult to share, and nearly impossible to run at scale.
+
+## What we built
+
+**MoBILAB-JS** is a unified MATLAB/Python toolbox that addresses these pain points:
+
+### Core features
+
+- **Automated artifact rejection** using ICA-based decomposition with MARA/ICLabel for component classification
+- **Multi-modal synchronization** to align EEG, motion capture, and force plate data at a common timebase
+- **Event-locked epoching** with support for gait events (heel strikes, toe-offs) detected from kinematic data
+- **Source localization** using DIPFIT/LORETA, with population-level average head models for when individual MRIs are unavailable
+- **HPC batch processing** via SLURM job arrays — process 100 subjects overnight on a university cluster
+
+### Reproducibility-first design
+
+Every pipeline step logs its parameters to a JSON sidecar file. This means any analysis can be re-run identically months later, or shared with collaborators who can reproduce figures from raw data with a single command.
+
+## Why MATLAB (still)?
+
+Neuroscience research labs have decades of MATLAB code and expertise. Forcing a wholesale switch to Python creates friction and introduces new bugs. MoBILAB-JS bridges both worlds: the core algorithms are in MATLAB (EEGLAB-compatible), with a Python wrapper (`mobilab_py`) for integration with modern ML pipelines.
+
+## Impact
+
+Since release, the toolbox has been downloaded over 200 times and adopted by labs at three universities. We are actively working on a fully Python-native v2.0 with PyTorch integration for deep learning-based artifact removal.
+
+## Getting started
+
+Full documentation and tutorials are available on [GitHub](https://github.com/JacobSal). The toolbox requires MATLAB R2020b or later and EEGLAB v2021.1+.
+
+```matlab
+% Quick start example
+EEG = mobilab_preprocess(EEG, 'highpass', 1, 'lowpass', 50, 'ica', true);
+EEG = mobilab_epoch(EEG, {'heelstrike'}, [-0.5 1.5]);
+mobilab_plot_ersp(EEG, 'channel', 'FCz');
+```
