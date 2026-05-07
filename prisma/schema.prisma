@@ -1,0 +1,57 @@
+// Prisma schema for local content management
+// Used with Docker Compose PostgreSQL — not required for the static site build
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Paper {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  authors   String[] // ordered list
+  journal   String
+  year      Int
+  abstract  String
+  doi       String?
+  link      String?
+  tags      String[]
+  featured  Boolean  @default(false)
+  pdfPath   String?  // path in public/pdfs/
+  content   String?  // MDX blurb text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  figures PaperFigure[]
+}
+
+model PaperFigure {
+  id      Int    @id @default(autoincrement())
+  paperId Int
+  paper   Paper  @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  src     String // path in public/
+  caption String
+  order   Int    @default(0)
+}
+
+model Project {
+  id          Int       @id @default(autoincrement())
+  slug        String    @unique
+  title       String
+  description String
+  status      String    // 'active' | 'completed' | 'on-hold'
+  tags        String[]
+  githubUrl   String?
+  demoUrl     String?
+  paperUrl    String?
+  image       String?
+  startYear   Int
+  endYear     Int?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
