@@ -16,41 +16,60 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: npm
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: build
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site (static)
+        run: |
+          mkdir -p _site
+          # Copy everything except dot-folders and the legacy archives
+          rsync -a \
+            --exclude='_site' \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.claude' \
+            --exclude='.continue' \
+            --exclude='.next' \
+            --exclude='_archive' \
+            --exclude='_docs' \
+            --exclude='node_modules' \
+            --exclude='src' \
+            --exclude='content' \
+            --exclude='prisma' \
+            --exclude='public' \
+            --exclude='package.json' \
+            --exclude='package-lock.json' \
+            --exclude='next.config.ts' \
+            --exclude='next-env.d.ts' \
+            --exclude='tsconfig.json' \
+            --exclude='tailwind.config.ts' \
+            --exclude='postcss.config.js' \
+            --exclude='Dockerfile' \
+            --exclude='docker-compose.yml' \
+            --exclude='.env*' \
+            ./ _site/
+          # Copy the CV PDF from the legacy public folder if not already in assets
+          if [ -f "public/pdfs/CV_JacobSalminen_09082023.pdf" ] && [ ! -f "_site/assets/pdf/CV_JacobSalminen_09082023.pdf" ]; then
+            mkdir -p _site/assets/pdf
+            cp public/pdfs/CV_JacobSalminen_09082023.pdf _site/assets/pdf/ || true
+          fi
+          # Disable Jekyll processing
+          touch _site/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

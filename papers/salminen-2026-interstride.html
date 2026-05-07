@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interstride EEG variability across gait speeds — Salminen et al. (2026) · Jacob Salminen</title>
+<meta name="description" content="Stride-by-stride variation in EEG power spectra during walking at a range of gait speeds in younger and older adults. Salminen et al., IEEE TNSRE (2026).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../assets/css/site.css">
+<link rel="icon" href="../assets/img/headshot_smile.jpg" type="image/jpeg">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="container site-nav__inner">
+    <a class="site-nav__brand" href="../index.html">Jacob Salminen</a>
+    <button class="site-nav__toggle" id="navToggle" aria-label="Toggle navigation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+    <ul class="site-nav__links" id="navLinks">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="../index.html#papers">Papers</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="paper-hero">
+    <div class="container--narrow">
+      <a class="paper-hero__back" href="../index.html#papers">← All papers</a>
+      <div class="paper-hero__tags">
+        <span class="tag tag--review">In revision</span>
+        <span class="tag">First author</span>
+        <span class="tag">EEG · Biomechanics</span>
+      </div>
+      <h1 class="paper-hero__title">Interstride Variation in EEG Power Spectra of Younger and Older Adults Walking at a Range of Gait Speeds</h1>
+      <p class="paper-hero__authors">
+        <strong>Salminen J</strong>, Liu C, Pliner EM, Tenerowicz M, Roy A, Richer N, Hwang J, Hass CJ, Clark DJ, Cruz-Almeida Y, Manini TM, Seidler RD, Ferris DP
+      </p>
+      <div class="paper-hero__meta">
+        <span><strong>Venue</strong> · IEEE Transactions on Neural Systems &amp; Rehabilitation Engineering</span>
+        <span><strong>Vol.</strong> · 34, 952–965 (2026)</span>
+        <span><strong>DOI</strong> · <a href="https://doi.org/10.1109/TNSRE.2026.3656061" target="_blank" rel="noopener">10.1109/TNSRE.2026.3656061</a></span>
+      </div>
+      <div class="paper-hero__cta">
+        <a class="btn btn--clay" href="https://doi.org/10.1109/TNSRE.2026.3656061" target="_blank" rel="noopener">Read on publisher ↗</a>
+        <!-- Drop the manuscript PDF into /assets/pdf/papers/ and uncomment to enable in-page reading: -->
+        <!-- <a class="btn btn--ghost" href="../assets/pdf/papers/salminen-2026-interstride.pdf" target="_blank" rel="noopener">Open PDF ↗</a> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <article class="paper-body">
+    <div class="container--narrow">
+
+      <h2>The plain-language version</h2>
+      <p>
+        Walking looks simple, but it is the brain coordinating the body across thousands of small adjustments — one for every stride. This paper asks a question most EEG studies skip over: how much do those neural patterns <em>actually vary</em> from one stride to the next, and does that variability change as we age or speed up?
+      </p>
+      <p>
+        We had younger and older adults walk on a treadmill at several gait speeds while we recorded high-density EEG and gait kinematics. Instead of averaging across long windows, we computed power spectra <em>stride by stride</em>, which gave us a distribution of cortical activity per condition rather than a single mean.
+      </p>
+
+      <h2>Why this matters</h2>
+      <p>
+        Most mobile EEG studies of walking summarize cortical activity into a single number per condition. That hides exactly the thing aging research cares about: <em>variability</em>. Older adults often show greater stride-to-stride biomechanical variability, and we wanted to know whether the neural signal mirrors that — and whether the relationship strengthens or weakens with gait speed. Treating variability as the signal, not the noise, opens a tighter coupling between EEG and clinically meaningful measures of mobility decline.
+      </p>
+
+      <h2>What we found</h2>
+      <p>
+        Interstride EEG variability is structured, speed-dependent, and differs between age groups in ways that connect to mediolateral gait excursion. The full results, including all spectral bands and statistical tests, are in the manuscript.
+      </p>
+
+      <!-- Figure placeholders. Replace src with real images when ready. -->
+      <figure class="figure">
+        <div class="figure__placeholder">FIGURE 1 · ADD IMAGE TO ../assets/img/papers/salminen-2026-interstride/fig1.png</div>
+        <figcaption class="figure__caption">
+          <strong>Figure 1.</strong> Replace this placeholder with a methods schematic — treadmill setup, EEG cap, gait-event detection, and the stride-by-stride spectral pipeline. Drop the file at <code>assets/img/papers/salminen-2026-interstride/fig1.png</code>.
+        </figcaption>
+      </figure>
+
+      <figure class="figure">
+        <div class="figure__placeholder">FIGURE 2 · ADD IMAGE TO ../assets/img/papers/salminen-2026-interstride/fig2.png</div>
+        <figcaption class="figure__caption">
+          <strong>Figure 2.</strong> Suggested: interstride spectral distributions in theta and beta bands across speeds, split by age group. The headline figure for the talk version of this work.
+        </figcaption>
+      </figure>
+
+      <h2>How to cite</h2>
+      <div class="citation-block">
+        Salminen J, Liu C, Pliner EM, Tenerowicz M, Roy A, Richer N, Hwang J, Hass CJ, Clark DJ, Cruz-Almeida Y, Manini TM, Seidler RD, Ferris DP. Interstride Variation in EEG Power Spectra of Younger and Older Adults Walking at a Range of Gait Speeds. <em>IEEE Transactions on Neural Systems and Rehabilitation Engineering</em>. 2026;34:952–965. doi:10.1109/TNSRE.2026.3656061
+      </div>
+
+      <!-- Embedded PDF (uncomment when manuscript is hosted): -->
+      <!--
+      <div class="pdf-embed">
+        <iframe src="../assets/pdf/papers/salminen-2026-interstride.pdf" title="Salminen et al. 2026 manuscript">
+          <p class="pdf-embed__fallback">Your browser cannot display this PDF inline. <a href="../assets/pdf/papers/salminen-2026-interstride.pdf">Download the PDF</a>.</p>
+        </iframe>
+      </div>
+      -->
+
+    </div>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>© 2026 Jacob Salminen</div>
+    <div><a href="../index.html">← Back to home</a></div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js" defer></script>
+</body>
+</html>
