@@ -38,3 +38,4 @@ postgres-data/
 
 # archive
 **/_archive
+**/.continue
