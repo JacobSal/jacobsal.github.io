@@ -501,6 +501,52 @@ li + li { margin-top: var(--space-2); }
 .tl-item__body p { margin: 0 0 var(--space-3); }
 .tl-item__body p:last-child { margin-bottom: 0; }
 
+/* Bulleted lists inside an experience entry */
+.tl-item__body ul,
+.tl-item__body ol {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+}
+.tl-item__body ul li,
+.tl-item__body ol li {
+  position: relative;
+  padding-left: 1.15rem;
+  margin: 0 0 var(--space-3);
+  line-height: 1.55;
+}
+.tl-item__body ul li:last-child,
+.tl-item__body ol li:last-child { margin-bottom: 0; }
+.tl-item__body ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--clay);
+}
+.tl-item__body ol { counter-reset: tlBullet; }
+.tl-item__body ol li {
+  counter-increment: tlBullet;
+  padding-left: 1.6rem;
+}
+.tl-item__body ol li::before {
+  content: counter(tlBullet) '.';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--clay);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+/* When bullets follow a paragraph, tighten the gap */
+.tl-item__body p + ul,
+.tl-item__body p + ol { margin-top: var(--space-1); }
+
 .split-grid {
   display: grid;
   grid-template-columns: 1fr;

@@ -70,6 +70,28 @@ For figures that should sit two-up on wider screens, wrap a pair (or any number)
 
 Everything is plain HTML — open `index.html` in any text editor and edit the visible copy. There is no build step.
 
+### Adding bullet points to an experience entry
+
+Inside any `<div class="tl-item__body">` (under Experience or Education on the home page) you can use a `<ul>` for bullets or `<ol>` for a numbered list. The styles in `site.css` give you small clay-coloured dots for `<ul>` and clay numerals for `<ol>`.
+
+```html
+<li class="tl-item">
+  <div class="tl-item__date">Year – Year</div>
+  <h4 class="tl-item__title">Role title</h4>
+  <div class="tl-item__org">Organisation</div>
+  <div class="tl-item__body">
+    <p>Optional one-line context paragraph.</p>
+    <ul>
+      <li>First thing I did in this role.</li>
+      <li>Second thing I did, with a measurable result.</li>
+      <li>Third thing.</li>
+    </ul>
+  </div>
+</li>
+```
+
+Bullets and paragraphs can be mixed freely inside the same body — a paragraph for context followed by a bulleted list of accomplishments works well.
+
 ## Local preview
 
 Either open `index.html` directly in a browser (paths are all relative), or serve the directory:
