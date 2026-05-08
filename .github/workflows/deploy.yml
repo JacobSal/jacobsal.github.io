@@ -27,6 +27,11 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          # Auto-enable Pages on first run if it has not been enabled yet.
+          # Note: this requires that the repository's Settings → Actions →
+          # Workflow permissions allow "Read and write permissions".
+          enablement: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
