@@ -29,8 +29,42 @@ Plain static HTML, CSS, and a tiny vanilla-JS file. Deployed to GitHub Pages by 
 1. Copy one of the files in `papers/` (`salminen-2024-gait-speed.html` is a good template) to a new file named with a slug like `lastname-YEAR-shortname.html`.
 2. Update the `<title>`, hero section, authors, venue, DOI, and citation block.
 3. Add a card for it on the home page in the `#papers` section of `index.html`. Match the existing markup of `.paper-card` so the styling stays consistent.
-4. Drop figure images into `assets/img/papers/<your-slug>/fig1.png`, `fig2.png`, etc., and replace the `figure__placeholder` divs in the paper page with `<img src="...">`.
+4. Drop figures into `assets/img/papers/<your-slug>/`. Both formats work:
+   - **PDF figures** (preferred for vector originals): drop `figure_1.pdf`, `figure_2_design.pdf`, etc. The CI workflow will rasterise each PDF to a sibling PNG on every push, and the page should reference the PNG with the PDF as the click-through target. See "PDF figure workflow" below.
+   - **PNG / JPG figures**: drop them directly and reference them as `<img src="...">`.
 5. (Optional) Drop the manuscript PDF at `assets/pdf/papers/<your-slug>.pdf` and uncomment the `pdf-embed` block at the bottom of the page to embed it inline.
+
+## PDF figure workflow
+
+PDFs are the preferred figure format because they are vector and scale beautifully on retina displays. The repo includes a converter at `scripts/build_figure_previews.py` that walks `assets/img/papers/` and renders the first page of every PDF to a sibling PNG.
+
+The converter runs automatically in GitHub Actions on every push (see `.github/workflows/deploy.yml`), so day-to-day you only need to commit the PDFs.
+
+To regenerate previews locally — for example to preview a paper page in your browser before committing:
+
+```bash
+pip install pymupdf
+python scripts/build_figure_previews.py             # only re-renders changed PDFs
+python scripts/build_figure_previews.py --force     # re-render everything
+python scripts/build_figure_previews.py --dpi 220   # higher-resolution PNGs
+```
+
+In the paper-page HTML, each figure block looks like this — the link wraps the PNG preview and points at the source PDF, and a small "PDF" badge in the corner is added by the CSS:
+
+```html
+<figure class="figure figure--pdf">
+  <a class="figure__link" href="../assets/img/papers/<slug>/figure_1.pdf" target="_blank" rel="noopener">
+    <img src="../assets/img/papers/<slug>/figure_1.png" alt="Figure 1 — short description">
+    <span class="figure__badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      PDF
+    </span>
+  </a>
+  <figcaption class="figure__caption"><strong>Figure 1.</strong> Caption text.</figcaption>
+</figure>
+```
+
+For figures that should sit two-up on wider screens, wrap a pair (or any number) in `<div class="figure-grid"> ... </div>`.
 
 ## Editing content
 

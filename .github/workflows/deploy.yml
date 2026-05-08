@@ -28,6 +28,17 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install figure-converter dependencies
+        run: pip install --quiet pymupdf
+
+      - name: Generate PNG previews from PDF figures
+        run: python scripts/build_figure_previews.py
+
       - name: Build site (static)
         run: |
           mkdir -p _site
@@ -56,6 +67,7 @@ jobs:
             --exclude='Dockerfile' \
             --exclude='docker-compose.yml' \
             --exclude='.env*' \
+            --exclude='scripts' \
             ./ _site/
           # Copy the CV PDF from the legacy public folder if not already in assets
           if [ -f "public/pdfs/CV_JacobSalminen_09082023.pdf" ] && [ ! -f "_site/assets/pdf/CV_JacobSalminen_09082023.pdf" ]; then
