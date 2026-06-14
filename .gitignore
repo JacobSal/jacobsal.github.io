@@ -51,3 +51,4 @@ venv_wsl/
 
 # submodules
 submodules/
+.mcp.json
