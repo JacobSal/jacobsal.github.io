@@ -1,0 +1,7 @@
+default_workspace: default
+fts5_enabled: true
+log_level: INFO
+pagination_default: 10
+pagination_max: 50
+response_token_limit: 5000
+wal_mode: true

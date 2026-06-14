@@ -1,0 +1,18 @@
+[submodule "submodules/quantum-lens"]
+	path = submodules/quantum-lens
+	url = https://github.com/primeline-ai/quantum-lens.git
+[submodule "submodules/primeline-skills"]
+	path = submodules/primeline-skills
+	url = https://github.com/primeline-ai/primeline-skills.git
+[submodule "submodules/claude-adaptive-research"]
+	path = submodules/claude-adaptive-research
+	url = https://github.com/primeline-ai/claude-adaptive-research.git
+[submodule "submodules/universal-planning-framework"]
+	path = submodules/universal-planning-framework
+	url = https://github.com/primeline-ai/universal-planning-framework.git
+[submodule "submodules/claude-tmux-orchestration"]
+	path = submodules/claude-tmux-orchestration
+	url = https://github.com/primeline-ai/claude-tmux-orchestration.git
+[submodule "submodules/evolving-lite"]
+	path = submodules/evolving-lite
+	url = https://github.com/primeline-ai/evolving-lite.git

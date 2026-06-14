@@ -39,3 +39,15 @@ postgres-data/
 # archive
 **/_archive
 **/.continue
+
+# kb
+_kb/
+
+# python
+.venv/
+venv/
+.venv_wsl/
+venv_wsl/
+
+# submodules
+submodules/

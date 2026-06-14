@@ -1,0 +1,8 @@
+{
+  "enabledPlugins": {
+    "claude-adaptive-research@submodules-marketplace": true,
+    "claude-resume-kit@submodules-marketplace": true,
+    "evolving-lite@submodules-marketplace": true,
+    "primeline-skills@submodules-marketplace": true
+  }
+}
